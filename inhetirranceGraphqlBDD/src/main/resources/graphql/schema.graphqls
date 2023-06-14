@@ -1,0 +1,32 @@
+schema {
+    mutation: Mutation
+    query: Query
+}
+
+interface Product {
+    name: String
+}
+
+type Pen implements Product {
+    name: String
+    color: String
+}
+
+type Mutation {
+    # Pour créer un stylo
+    createPen(penInput: PenInput): Pen
+}
+
+input PenInput {
+    name: String!
+    color: String!
+}
+
+type Query {
+    # Pour récupérer un stylo
+    getPenById(id: ID!): Pen
+    # Pour récupérer tous les produits
+    allProducts: [Product!]
+    # Pour récupérer tous les stylos
+    allPens: [Pen!]
+}
